@@ -52,8 +52,8 @@ SENTRY_KEY = '{{ pillar.sentry.server.secret_key }}'
 # but proxies may interfere with this.
 SENTRY_URL_PREFIX = ''
 
-SENTRY_WEB_HOST = '{{ pillar.sentry.server.bind_address }}'
-SENTRY_WEB_PORT = {{ pillar.sentry.server.bind_port }}
+SENTRY_WEB_HOST = '{{ pillar.sentry.server.bind.address }}'
+SENTRY_WEB_PORT = {{ pillar.sentry.server.bind.port }}
 SENTRY_WEB_OPTIONS = {
     'workers': 3,  # the number of gunicorn workers
     'secure_scheme_headers': {'X-FORWARDED-PROTO': 'https'},  # detect HTTPS mode from X-Forwarded-Proto header

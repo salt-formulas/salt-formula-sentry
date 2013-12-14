@@ -10,6 +10,10 @@ It’s important to note that Sentry should not be thought of as a log stream, b
     sentry:
       server:
         enabled: true
+        secret_key: secret
+        bind:
+          address: 0.0.0.0
+          port: 8080
         cache:
           engine: 'memcached'
           host: '127.0.0.1'
