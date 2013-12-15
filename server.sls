@@ -1,11 +1,10 @@
 {%- if pillar.sentry.server.enabled %}
 
-include
+include:
 - python
 
 sentry_packages:
-  pkg:
-  - installed
+  pkg.installed:
   - names:
     - python-setuptools
     - python-memcache
@@ -15,8 +14,6 @@ sentry_packages:
     - python-simplejson
     - build-essential
     - gettext
-  - require:
-    - pkg: python_packages
 
 /srv/sentry:
   virtualenv.manage:
@@ -44,12 +41,11 @@ sentry_packages:
     - pkg: sentry_packages
     - virtualenv: /srv/sentry
 
-{#
+
 supervisor:
   service.running:
   - enable: True
   - watch:
     - file: /etc/supervisor/conf.d/sentry-web.conf
-#}
 
 {%- endif %}
