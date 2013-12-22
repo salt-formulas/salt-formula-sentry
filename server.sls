@@ -2,6 +2,7 @@
 
 include:
 - python
+- supervisor
 
 sentry_packages:
   pkg.installed:
@@ -14,6 +15,8 @@ sentry_packages:
     - python-simplejson
     - build-essential
     - gettext
+  - require:
+    - pkg: python_packages
 
 /srv/sentry:
   virtualenv.manage:
@@ -40,12 +43,7 @@ sentry_packages:
   - require:
     - pkg: sentry_packages
     - virtualenv: /srv/sentry
-
-
-supervisor:
-  service.running:
-  - enable: True
-  - watch:
-    - file: /etc/supervisor/conf.d/sentry-web.conf
+  - watch_in:
+    - service: supervisor_service
 
 {%- endif %}
