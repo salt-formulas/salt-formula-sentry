@@ -25,15 +25,6 @@ sentry_packages:
   - require:
     - pkg: sentry_packages
 
-/etc/supervisor/conf.d/sentry-web.conf:
-  file:
-  - managed
-  - source: salt://sentry/conf/sentry-web.conf
-  - mode: 644
-  - template: jinja
-  - require:
-    - pkg: sentry_packages
-
 /etc/sentry.conf.py:
   file:
   - managed
