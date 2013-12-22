@@ -25,6 +25,14 @@ sentry_packages:
   - require:
     - pkg: sentry_packages
 
+sentry_user:
+  user.present:
+  - name: sentry
+  - system: True
+  - home: /srv/sentry
+  - require:
+    - virtualenv: /srv/sentry
+
 /etc/sentry.conf.py:
   file:
   - managed
@@ -32,8 +40,8 @@ sentry_packages:
   - mode: 644
   - template: jinja
   - require:
-    - pkg: sentry_packages
     - virtualenv: /srv/sentry
+    - user: sentry_user
   - watch_in:
     - service: supervisor_service
 

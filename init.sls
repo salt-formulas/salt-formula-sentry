@@ -1,5 +1,5 @@
 
 include:
-{% if pillar.sentry.server is defined %}
+{%- if pillar.sentry.server is defined %}
 - sentry.server
-{% endif %}
+{%- endif %}

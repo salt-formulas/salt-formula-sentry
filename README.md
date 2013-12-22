@@ -10,8 +10,10 @@ It’s important to note that Sentry should not be thought of as a log stream, b
     sentry:
       server:
         enabled: true
-        secret_key: secret
+        workers: 3
+        secret_key: rfui34bt34bierbrebsbfhvbfdsv
         bind:
+          name: sentry.domain.com
           address: 0.0.0.0
           port: 8080
         cache:
