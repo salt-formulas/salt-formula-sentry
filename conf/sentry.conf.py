@@ -31,10 +31,6 @@ CACHES = {
 
 {% if pillar.sentry.server.queue is defined %}
 
-SENTRY_USE_QUEUE = False
-
-{% else %}
-
 SENTRY_USE_QUEUE = True
 
 BROKER_URL = 'redis://localhost:6379'
@@ -52,6 +48,10 @@ SENTRY_REDIS_OPTIONS = {
     }
 }
 
+{% else %}
+
+SENTRY_USE_QUEUE = False
+
 {% endif %}
 
 
@@ -60,6 +60,11 @@ SENTRY_KEY = '{{ pillar.sentry.server.secret_key }}'
 # You should configure the absolute URI to Sentry. It will attempt to guess it if you don't
 # but proxies may interfere with this.
 SENTRY_URL_PREFIX = 'http://{{ pillar.sentry.server.bind.name }}'
+
+ALLOWED_HOSTS = [
+    '{{ pillar.sentry.server.bind.name }}',
+    '{{ pillar.sentry.server.bind.name }}:{{ pillar.sentry.server.bind.port }}',
+]
 
 SENTRY_WEB_HOST = '{{ pillar.sentry.server.bind.address }}'
 SENTRY_WEB_PORT = {{ pillar.sentry.server.bind.port }}

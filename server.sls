@@ -33,6 +33,14 @@ sentry_user:
   - require:
     - virtualenv: /srv/sentry
 
+/srv/sentry/logs:
+  file.directory:
+  - mode: 755
+  - user: sentry
+  - require:
+    - virtualenv: /srv/sentry
+    - user: sentry_user
+
 /etc/sentry.conf.py:
   file:
   - managed
@@ -40,8 +48,7 @@ sentry_user:
   - mode: 644
   - template: jinja
   - require:
-    - virtualenv: /srv/sentry
-    - user: sentry_user
+    - file: /srv/sentry/logs
   - watch_in:
     - service: supervisor_service
 
