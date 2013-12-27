@@ -59,7 +59,7 @@ SENTRY_KEY = '{{ pillar.sentry.server.secret_key }}'
 
 # You should configure the absolute URI to Sentry. It will attempt to guess it if you don't
 # but proxies may interfere with this.
-SENTRY_URL_PREFIX = 'http://{{ pillar.sentry.server.bind.name }}'
+SENTRY_URL_PREFIX = 'http://{{ pillar.sentry.server.bind.name }}:{{ pillar.sentry.server.bind.port }}'
 
 ALLOWED_HOSTS = [
     '{{ pillar.sentry.server.bind.name }}',
