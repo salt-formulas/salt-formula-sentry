@@ -39,12 +39,13 @@ SENTRY_URL_PREFIX = 'http://{{ pillar.sentry.server.bind.name }}:{{ pillar.sentr
 
 ALLOWED_HOSTS = [
     '{{ pillar.sentry.server.bind.name }}',
+    '{{ pillar.sentry.server.bind.address }}',
     '{{ pillar.sentry.server.bind.name }}:{{ pillar.sentry.server.bind.port }}',
 ]
 
 SENTRY_REMOTE_TIMEOUT = 10
 
-SENTRY_REMOTE_URL = 'http://sentry.samsung.majklk.cz/sentry/store/'
+SENTRY_REMOTE_URL = 'http://{{ pillar.sentry.server.bind.name }}/sentry/store/'
 
 SENTRY_WEB_HOST = '{{ pillar.sentry.server.bind.address }}'
 SENTRY_WEB_PORT = {{ pillar.sentry.server.bind.port }}
