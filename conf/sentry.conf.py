@@ -25,35 +25,7 @@ CACHES = {
     }
 }
 
-# Buffers (combined with queueing) act as an intermediate layer between the database and
-# the storage API. They will greatly improve efficiency on large numbers of the same events
-# being sent to the API in a short amount of time.
-
-{% if pillar.sentry.server.queue is defined %}
-
-SENTRY_USE_QUEUE = True
-
-BROKER_URL = 'redis://localhost:6379'
-
-# You'll need to install the required dependencies for Redis buffers:
-#   pip install redis hiredis nydus
-
-SENTRY_BUFFER = 'sentry.buffer.redis.RedisBuffer'
-SENTRY_REDIS_OPTIONS = {
-    'hosts': {
-        0: {
-            'host': '127.0.0.1',
-            'port': 6379,
-        }
-    }
-}
-
-{% else %}
-
-SENTRY_USE_QUEUE = False
-
-{% endif %}
-
+CELERY_ALWAYS_EAGER = False
 
 SENTRY_KEY = '{{ pillar.sentry.server.secret_key }}'
 
@@ -65,6 +37,10 @@ ALLOWED_HOSTS = [
     '{{ pillar.sentry.server.bind.name }}',
     '{{ pillar.sentry.server.bind.name }}:{{ pillar.sentry.server.bind.port }}',
 ]
+
+SENTRY_REMOTE_TIMEOUT = 10
+
+SENTRY_REMOTE_URL = 'http://sentry.samsung.majklk.cz/sentry/store/'
 
 SENTRY_WEB_HOST = '{{ pillar.sentry.server.bind.address }}'
 SENTRY_WEB_PORT = {{ pillar.sentry.server.bind.port }}
