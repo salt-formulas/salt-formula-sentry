@@ -38,9 +38,7 @@ SENTRY_URL_PREFIX = 'http://{{ pillar.sentry.server.bind.name }}:{{ pillar.sentr
 {%- endif %}
 
 ALLOWED_HOSTS = [
-    '{{ pillar.sentry.server.bind.name }}',
-    '{{ pillar.sentry.server.bind.address }}',
-    '{{ pillar.sentry.server.bind.name }}:{{ pillar.sentry.server.bind.port }}',
+    '*',
 ]
 
 SENTRY_REMOTE_TIMEOUT = 10
