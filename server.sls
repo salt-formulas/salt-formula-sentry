@@ -49,6 +49,15 @@ sentry_user:
     - virtualenv: /srv/sentry
     - user: sentry_user
 
+/srv/sentry:
+  file.directory:
+  - mode: 755
+  - user: sentry
+  - require:
+    - virtualenv: /srv/sentry
+    - user: sentry_user
+
+
 /etc/sentry.conf.py:
   file:
   - managed
