@@ -32,18 +32,13 @@ sentry_user:
   - system: True
   - home: /srv/sentry
 
-/srv/sentry/logs:
+sentry_writable_dirs:
   file.directory:
   - mode: 755
   - user: sentry
-  - require:
-    - virtualenv: /srv/sentry
-    - user: sentry_user
-
-/srv/sentry/run:
-  file.directory:
-  - mode: 755
-  - user: sentry
+  - names:
+    - /srv/sentry
+    - /srv/sentry/logs
   - require:
     - virtualenv: /srv/sentry
     - user: sentry_user
