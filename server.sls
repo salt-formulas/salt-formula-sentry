@@ -24,14 +24,13 @@ sentry_packages:
   - requirements: salt://sentry/conf/requirements.txt
   - require:
     - pkg: sentry_packages
+    - user: sentry_user
 
 sentry_user:
   user.present:
   - name: sentry
   - system: True
   - home: /srv/sentry
-  - require:
-    - virtualenv: /srv/sentry
 
 /srv/sentry/logs:
   file.directory:
