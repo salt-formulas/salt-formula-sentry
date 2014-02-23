@@ -39,6 +39,7 @@ sentry_writable_dirs:
   - names:
     - /srv/sentry
     - /srv/sentry/logs
+    - /srv/sentry/run
   - require:
     - virtualenv: /srv/sentry
     - user: sentry_user
