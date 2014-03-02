@@ -31,6 +31,33 @@ It’s important to note that Sentry should not be thought of as a log stream, b
           password: pass
           user: robot@domain.com
 
+## Sample pillar with proxy
+
+    sentry:
+      server:
+        enabled: true
+        workers: 3
+        secret_key: rfui34bt34bierbrebsbfhvbfdsv
+        bind:
+          url: http://another.domain.cz
+          name: sentry.domain.com
+          address: 0.0.0.0
+          port: 8080
+        cache:
+          engine: 'memcached'
+          host: '127.0.0.1'
+          prefix: 'CACHE_SENTRY'
+        database:
+          engine: 'mysql'
+          host: '127.0.0.1'
+          name: 'sentry'
+          password: 'pwd'
+          user: 'sentry'
+        mail:
+          host: domain.com
+          password: pass
+          user: robot@domain.com
+
 ## Read more
 
 * https://github.com/getsentry/sentry
