@@ -32,13 +32,13 @@ SENTRY_KEY = '{{ sentry.secret_key }}'
 
 # You should configure the absolute URI to Sentry. It will attempt to guess it if you don't
 # but proxies may interfere with this.
-{%- if sentry.bind.url is defined %}
-SENTRY_URL_PREFIX = '{{ sentry.bind.url }}'
+{%- if sentry.bind.name is defined %}
+SENTRY_URL_PREFIX = '{{ sentry.bind.name }}'
 {%- else %}
 {%- if pillar.nginx.proxy is defined %}
 SENTRY_URL_PREFIX = 'http://{{ sentry.bind.name }}'
 {%- else %}
-SENTRY_URL_PREFIX = 'http://{{ sentry.bind.name }}:{{ sentry.bind.port }}'
+SENTRY_URL_PREFIX = 'http://{{ sentry.bind.url }}:{{ sentry.bind.port }}'
 {%- endif %}
 {%- endif %}
 
