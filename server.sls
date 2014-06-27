@@ -53,6 +53,15 @@ sentry_writable_dirs:
   - require:
     - file: /srv/sentry/logs
   - watch_in:
-    - service: supervisor_service
+    - service: sentry_services
+
+sentry_services:
+  supervisord.running:
+  - names:
+    - sentry_web
+    - sentry_worker
+  - restart: True
+  - user: root
+
 
 {%- endif %}
