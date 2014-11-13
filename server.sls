@@ -32,6 +32,8 @@ sentry_user:
   - name: sentry
   - system: True
   - home: /srv/sentry
+  - require:
+    - file: sentry_writable_dirs
 
 sentry_writable_dirs:
   file.directory:
@@ -41,9 +43,6 @@ sentry_writable_dirs:
     - /srv/sentry
     - /srv/sentry/logs
     - /srv/sentry/run
-  - require:
-    - virtualenv: /srv/sentry
-    - user: sentry_user
 
 /etc/sentry.conf.py:
   file:
