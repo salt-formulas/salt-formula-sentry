@@ -39,6 +39,7 @@ sentry_writable_dirs:
   file.directory:
   - mode: 755
   - user: sentry
+  - makedirs: True
   - names:
     - /srv/sentry
     - /srv/sentry/logs
