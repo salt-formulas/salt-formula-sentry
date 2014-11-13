@@ -25,6 +25,7 @@ sentry_packages:
   - require:
     - pkg: sentry_packages
     - user: sentry_user
+    - file: sentry_writable_dirs
 
 sentry_user:
   user.present:
