@@ -56,13 +56,4 @@ sentry_writable_dirs:
   - watch_in:
     - service: sentry_services
 
-sentry_services:
-  supervisord.running:
-  - names:
-    - sentry_web
-    - sentry_worker
-  - restart: True
-  - user: root
-
-
 {%- endif %}
