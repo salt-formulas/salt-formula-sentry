@@ -64,11 +64,19 @@ SENTRY_WEB_OPTIONS = {
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-EMAIL_HOST = '{{ sentry.mail.host }}'
-EMAIL_HOST_PASSWORD = '{{ sentry.mail.password }}'
-EMAIL_HOST_USER = '{{ sentry.mail.user }}'
-EMAIL_PORT = 25
+{%- if sentry.mail.get('encryption', 'none') == 'tls' %}
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+{%- endif %}
+{%- if sentry.mail.get('encryption', 'none') == 'ssl' %}
 EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+{%- endif %}
+EMAIL_HOST = "{{ sentry.mail.get('host', 'localhost') }}"
+EMAIL_HOST_USER = "{{ sentry.mail.user }}"
+EMAIL_HOST_PASSWORD = "{{ sentry.mail.password }}"
+EMAIL_PORT = {{ sentry.mail.get('port', '25') }}
+
 
 # http://twitter.com/apps/new
 # It's important that input a callback URL, even if its useless. We have no idea why, consult Twitter.
