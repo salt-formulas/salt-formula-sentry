@@ -2,7 +2,6 @@
 
 include:
 - python
-- supervisor
 
 sentry_packages:
   pkg.installed:
@@ -53,7 +52,5 @@ sentry_writable_dirs:
   - template: jinja
   - require:
     - file: /srv/sentry/logs
-  - watch_in:
-    - service: sentry_services
 
 {%- endif %}
