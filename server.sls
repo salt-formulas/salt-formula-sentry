@@ -14,6 +14,8 @@ sentry_packages:
     - python-simplejson
     - build-essential
     - gettext
+    - libxml2-dev
+    - libxslt1-dev
   - require:
     - pkg: python_packages
 
