@@ -30,7 +30,7 @@ sentry_user:
   - system: True
   - home: /srv/sentry
   - require:
-    - file: sentry_writable_dirs
+    - file: /srv/sentry
 
 sentry_writable_dirs:
   file.directory:
