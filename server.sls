@@ -16,6 +16,7 @@ sentry_packages:
     - gettext
     - libxml2-dev
     - libxslt1-dev
+    - install libffi-dev
   - require:
     - pkg: python_packages
 

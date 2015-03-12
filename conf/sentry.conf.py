@@ -98,3 +98,6 @@ GITHUB_API_SECRET = ''
 # https://trello.com/1/appKey/generate
 TRELLO_API_KEY = ''
 TRELLO_API_SECRET = ''
+
+# reuired 7.4 +
+SENTRY_CACHE = 'sentry.cache.django.DjangoCache'
