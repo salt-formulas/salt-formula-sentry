@@ -1,0 +1,36 @@
+applications:
+- sentry
+parameters:
+  _param:
+    sentry_mail_host: localhost
+    sentry_mail_port: 25
+    sentry_mail_user: none
+    sentry_mail_password: none
+    sentry_mail_encryption: none
+    sentry_mail_from: mail@localhost
+    sentry_server_name: taiga.domain.com
+  sentry:
+    server:
+      workers: 1
+      bind:
+        name: ${_param:nginx_sentry_server_host}
+        address: 0.0.0.0
+        port: 8090
+      enabled: true
+      secret_key: ${_param:sentry_secret_key}
+      cache:
+        engine: 'memcached'
+        host: '127.0.0.1'
+        prefix: 'CACHE_SENTRY'
+      database:
+        engine: postgresql
+        host: 127.0.0.1
+        name: sentry
+        password: ${_param:postgresql_sentry_password}
+        user: sentry
+      mail:
+        host: ${_param:sentry_mail_host}
+        port: ${_param:sentry_mail_port}
+        user: ${_param:sentry_mail_user}
+        password: ${_param:sentry_mail_password}
+        encryption: ${_param:sentry_mail_encryption}
