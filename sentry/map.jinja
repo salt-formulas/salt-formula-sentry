@@ -1,0 +1,27 @@
+{%- load_yaml as defaults %}
+Debian:
+  pkgs:
+  - python-setuptools
+  - python-memcache
+  - python-psycopg2
+  - python-imaging
+  - python-docutils
+  - python-simplejson
+  - build-essential
+  - gettext
+  - libxml2-dev
+  - libxslt1-dev
+  - libffi-dev
+  - libjpeg-dev
+  - zlib1g-dev
+  ssl: false
+  bind:
+    address: 0.0.0.0
+    port: 9000
+  dir:
+    base: /srv/sentry
+    config: /etc/sentry
+    log: /var/log/sentry
+{%- endload %}
+
+{%- set server = salt['grains.filter_by'](defaults, merge=salt['pillar.get']('sentry:server')) %}
