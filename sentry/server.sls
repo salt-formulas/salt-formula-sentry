@@ -36,6 +36,7 @@ sentry_dirs:
     - {{ server.dir.log }}
     - {{ server.dir.config }}
     - {{ server.dir.base }}/run
+    - {{ server.dir.base }}/data
   - require:
     - user: sentry_user
 

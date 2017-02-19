@@ -1,5 +1,5 @@
 name: "sentry"
-version: "0.2"
+version: "2017.2"
 source: "https://github.com/salt-formulas/salt-formula-sentry"
 dependencies:
 - name: python

@@ -16,7 +16,7 @@ mail.username: '{{ server.mail.user }}'
 mail.password: '{{ server.mail.password }}'
 mail.use-tls: false
 # The email address to send on behalf of
-mail.from: 'sentry@localhost'
+mail.from: '{{ server.mail.from }}'
 {%- else %}
 mail.backend: 'dummy'
 {%- endif %}
@@ -58,7 +58,7 @@ redis.clusters:
 
 filestore.backend: 'filesystem'
 filestore.options:
-  location: '/tmp/sentry-files'
+  location: '{{ server.dir.base }}/data'
 
 # filestore.backend: 's3'
 # filestore.options:
