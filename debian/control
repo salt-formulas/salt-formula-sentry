@@ -2,7 +2,11 @@ Source: salt-formula-sentry
 Maintainer: Salt Formulas Community <salt-formulas@freelists.org>
 Section: admin
 Priority: optional
-Build-Depends: salt-master, python, python-yaml, debhelper (>= 9)
+Build-Depends: debhelper (>= 9),
+               python,
+               python-yaml,
+               salt-formula-linux,
+               salt-master
 Standards-Version: 3.9.6
 Homepage: https://github.com/salt-formulas/salt-formulas
 Vcs-Browser: https://github.com/salt-formulas/salt-formula-sentry
@@ -10,6 +14,6 @@ Vcs-Git: https://github.com/salt-formulas/salt-formula-sentry.git
 
 Package: salt-formula-sentry
 Architecture: all
-Depends: ${misc:Depends}, salt-master, reclass
+Depends: reclass, salt-master, ${misc:Depends}
 Description: Sentry salt formula
  Configure Sentry service.
