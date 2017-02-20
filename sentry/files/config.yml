@@ -12,8 +12,10 @@
 mail.backend: 'smtp'  # Use dummy if you want to disable email entirely
 mail.host: '{{ server.mail.host }}'
 mail.port: {{ server.mail.port }}
+{%- if server.mail.user is defined %}
 mail.username: '{{ server.mail.user }}'
 mail.password: '{{ server.mail.password }}'
+{%- endif %}
 mail.use-tls: false
 # The email address to send on behalf of
 mail.from: '{{ server.mail.from }}'
