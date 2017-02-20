@@ -4,3 +4,5 @@ source: "https://github.com/salt-formulas/salt-formula-sentry"
 dependencies:
 - name: python
   source: "https://github.com/salt-formulas/salt-formula-python"
+- name: linux
+  source: "https://github.com/salt-formulas/salt-formula-linux"
