@@ -139,6 +139,12 @@ SENTRY_WEB_OPTIONS = {
 #    'secure_scheme_headers': {'X-FORWARDED-PROTO': 'https'},  # detect HTTPS mode from X-Forwarded-Proto header
 }
 
+SENTRY_FEATURES = {
+    'auth:register': False
+}
+
+#SENTRY_ALLOW_ORIGIN = "*"
+
 """
 # You should configure the absolute URI to Sentry. It will attempt to guess it if you don't
 # but proxies may interfere with this.

@@ -41,6 +41,19 @@ mail.backend: 'dummy'
 # A new key can be generated with `$ sentry config generate-secret-key`
 system.secret-key: '{{ server.secret_key }}'
 
+# The URL prefix in which Sentry is accessible. This will be used both for
+# referencing URLs in the UI, as well as in outbound notifications.
+{%- if server.url is defined %}
+system.url-prefix: '{{ server.url }}'
+{%- endif %}
+
+# The technical contact address for this installation. This will be reported to
+# upstream to the Sentry team (as part of the Beacon), and will be the point of
+# contact for critical updates and security notifications.
+{%- if server.mail.engine == 'smtp' %}
+system.admin-email: '{{ server.mail.from }}'
+{%- endif %}
+
 # The ``redis.clusters`` setting is used, unsurprisingly, to configure Redis
 # clusters. These clusters can be then referred to by name when configuring
 # backends such as the cache, digests, or TSDB backend.
